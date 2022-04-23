@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import {Link} from "react-router-dom"
 
 const Form = (props) => {
     const [title, setTitle] = useState('')
@@ -13,7 +14,7 @@ const Form = (props) => {
         setDesciption(e.target.value)
     }
     const handlePrice = (e) => {
-        setPRice(e.target.value + price)
+        setPRice(e.target.value)
     }
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -31,6 +32,7 @@ const Form = (props) => {
 
     return (
         <div>
+            <Link to = {'/allProducts'}> Veiw All Products</Link>
             <form onSubmit={onSubmitHandler}>
                 <label>Title</label>
                 <input type='text' onChange={handleTitle}></input>

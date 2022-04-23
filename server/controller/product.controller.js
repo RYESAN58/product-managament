@@ -10,10 +10,18 @@ module.exports = {
     },
     getAllProducts: (request, response) => {
         Product.find({})
-            .then((allProduct) => {
+            .then( allProduct => {
                 console.log(allProduct)
-                res.json(allProduct)
+                response.json(allProduct)
             })
-            .catch((err)=> response.json(err))
+            .catch((err)=> {
+                console.log(err)
+                response.json(err)
+            })
+    },
+    findOneProduct: (request, response) => {
+        Product.findOne({_id:request.params.id})
+            .then(product => response.json(product))
+            .catch(err=> response.json(err))
     }
 }
